@@ -18,6 +18,7 @@ MIGRATE = Migrate(app, db)
 db.init_app(app)
 CORS(app)
 
+# Create all tables
 with app.app_context():
     db.create_all()
 
