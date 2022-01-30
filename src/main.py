@@ -2,11 +2,13 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 import os
+import click
 from queue import Empty
 from flask import Flask, request, jsonify, url_for
 from flask_migrate import Migrate
 from flask_swagger import swagger
 from flask_cors import CORS
+from flask.cli import with_appcontext
 from importlib_metadata import re
 from utils import APIException
 from models import db, Books
@@ -20,6 +22,12 @@ MIGRATE = Migrate(app, db)
 db.init_app(app)
 CORS(app)
 
+
+@click.command(name='create_tables')
+@with_appcontext
+def create_tables():
+    db.create_all()
+    
 # Handle/serialize errors like a JSON object
 @app.errorhandler(APIException)
 def handle_invalid_usage(error):
