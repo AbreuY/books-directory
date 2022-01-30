@@ -16,14 +16,10 @@ app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL').replace("
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 MIGRATE = Migrate(app, db)
 db.init_app(app)
-db.create_all()
 CORS(app)
 
-
-# @click.command(name='create_tables')
-# @with_appcontext
-# def create_tables():
-#     db.create_all()
+with app.app_context():
+    db.create_all()
 
 # Handle/serialize errors like a JSON object
 @app.errorhandler(APIException)
