@@ -22,6 +22,7 @@ CORS(app)
 with app.app_context():
     db.create_all()
 
+
 # Handle/serialize errors like a JSON object
 @app.errorhandler(APIException)
 def handle_invalid_usage(error):
