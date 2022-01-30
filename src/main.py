@@ -19,9 +19,8 @@ db.init_app(app)
 CORS(app)
 
 # Create all tables
-# with app.app_context():
-#     db.create_all()
-
+with app.app_context():
+    db.create_all()
 
 # Handle/serialize errors like a JSON object
 @app.errorhandler(APIException)

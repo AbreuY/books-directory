@@ -54,6 +54,3 @@ class Books(db.Model):
             db.session.rollback()
             print(error)
             return False
-
-
-db.create_all()
