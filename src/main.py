@@ -25,10 +25,6 @@ CORS(app)
 def handle_invalid_usage(error):
     return jsonify(error.to_dict()), error.status_code
 
-# generate sitemap with all your endpoints
-@app.route('/')
-def sitemap():
-    return generate_sitemap(app)
 
 @app.route('/books', methods=['POST', 'GET'])
 @app.route('/books/<int:book_id>', methods=['PUT', 'GET', 'DELETE'])
