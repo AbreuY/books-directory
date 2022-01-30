@@ -23,11 +23,11 @@ db.init_app(app)
 CORS(app)
 
 
-@click.command(name='create_tables')
-@with_appcontext
-def create_tables():
-    db.create_all()
-    
+# @click.command(name='create_tables')
+# @with_appcontext
+# def create_tables():
+#     db.create_all()
+
 # Handle/serialize errors like a JSON object
 @app.errorhandler(APIException)
 def handle_invalid_usage(error):
